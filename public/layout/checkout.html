@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAPHIRA - Thanh Toán</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* === Cài đặt Chung & Biến (Theme Checkout) === */
+:root {
+    --font-display: 'Manrope', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+    --color-primary: #f4c025;
+    --color-gold: #D4AF37;
+    --color-bg-start: #1a1a1a;
+    --color-bg-end: #000000;
+    --color-header: rgba(0, 0, 0, 0.8); /* bg-saphira-black-bg/80 */
+    --color-text-light: #ffffff;
+    --color-text-dim: rgba(255, 255, 255, 0.8);
+    --color-text-dimmer: rgba(255, 255, 255, 0.7);
+    --color-text-placeholder: rgba(255, 255, 255, 0.5);
+    --color-border: rgba(255, 255, 255, 0.2);
+    --color-border-focus: rgba(212, 175, 55, 0.5);
+    --color-bg-input: rgba(255, 255, 255, 0.05);
+    --color-bg-input-hover: rgba(255, 255, 255, 0.1);
+    --color-bg-summary: rgba(0, 0, 0, 0.5);
+    --color-black: #000000;
+
+    --border-radius: 0.5rem;
+    --border-radius-lg: 0.75rem; /* rounded-lg */
+    --border-radius-xl: 1rem; /* rounded-xl */
+}
+
+/* Reset cơ bản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-display);
+    background-image: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
+    color: var(--color-text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+
+/* === Header (Theme Checkout) === */
+.checkout-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-gold);
+    padding: 1rem 1rem; /* px-4 */
+    background-color: var(--color-header);
+    backdrop-filter: blur(4px);
+}
+@media (min-width: 640px) {
+    .checkout-header-sticky { padding: 1rem 2rem; } /* sm:px-8 */
+}
+@media (min-width: 1024px) {
+    .checkout-header-sticky { padding: 1rem 4rem; } /* md:px-16 */
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.header-logo-icon {
+    height: 1.5rem; /* h-6 */
+    width: 1.5rem; /* w-6 */
+    color: var(--color-gold);
+}
+.header-logo-icon svg { width: 100%; height: 100%; }
+.header-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.05em; /* tracking-wider */
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* gap-2 */
+}
+.icon-button {
+    display: flex;
+    height: 2.5rem; /* h-10 */
+    width: 2.5rem; /* w-10 */
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    color: var(--color-text-light);
+    transition: background-color 0.15s ease;
+}
+.icon-button:hover {
+    background-color: var(--color-bg-input-hover);
+}
+
+/* === Main Checkout Content === */
+.checkout-main-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto;
+    padding: 2.5rem 1rem; /* py-10 px-4 */
+}
+@media (min-width: 768px) {
+    .checkout-main-container { padding: 4rem 2rem; } /* md:py-16 md:px-16 */
+}
+
+.checkout-page-header {
+    margin-bottom: 2.5rem; /* mb-10 */
+    text-align: center;
+}
+.checkout-page-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.025em; /* tracking-wide */
+}
+@media (min-width: 768px) {
+    .checkout-page-title { font-size: 3rem; } /* md:text-5xl */
+}
+.checkout-page-subtitle {
+    margin-top: 0.5rem; /* mt-2 */
+    color: var(--color-text-dim);
+    font-size: 1rem; /* text-base */
+}
+@media (min-width: 768px) {
+    .checkout-page-subtitle { font-size: 1.125rem; } /* md:text-lg */
+}
+
+/* Layout Grid */
+.checkout-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* gap-8 */
+}
+@media (min-width: 1024px) { /* lg: */
+    .checkout-layout-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3rem; /* lg:gap-12 */
+    }
+}
+.checkout-form-column {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* space-y-8 */
+}
+@media (min-width: 1024px) { /* lg: */
+    .checkout-form-column { grid-column: span 3; }
+}
+
+/* Form Styles */
+.form-section-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 1rem; /* mb-4 */
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem; /* gap-4 */
+}
+@media (min-width: 640px) { /* sm: */
+    .form-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.col-span-2 {
+    grid-column: span 1;
+}
+@media (min-width: 640px) { /* sm: */
+    .col-span-2 { grid-column: span 2; }
+}
+
+.form-label {
+    color: var(--color-text-dim);
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    padding-bottom: 0.5rem; /* pb-2 */
+    display: block;
+}
+.form-input, .form-select {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    flex: 1;
+    resize: none;
+    overflow: hidden;
+    border-radius: var(--border-radius-lg);
+    color: var(--color-text-light);
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    height: 3rem; /* h-12 */
+    padding: 0.75rem; /* p-3 */
+    font-size: 1rem; /* text-base */
+    transition: all 0.15s ease;
+}
+.form-input::placeholder, .form-select {
+    color: var(--color-text-placeholder);
+}
+.form-input:focus, .form-select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 1px var(--color-border-focus);
+}
+.form-select {
+    appearance: none;
+}
+.form-checkbox-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem; /* gap-3 */
+    margin-top: 0.5rem; /* mt-2 */
+    cursor: pointer;
+}
+.form-checkbox {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-input-hover);
+    border: 1px solid var(--color-border);
+    color: var(--color-gold);
+}
+.form-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-border-focus);
+}
+.form-checkbox-label span {
+    color: var(--color-text-dim);
+    font-size: 0.875rem; /* text-sm */
+}
+
+/* Radio Options */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* space-y-3 */
+}
+.radio-option, .radio-option-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem; /* p-4 */
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.radio-option:hover, .radio-option-header:hover {
+    background-color: var(--color-bg-input-hover);
+}
+.form-radio {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+    background-color: var(--color-bg-input-hover);
+    border: 1px solid var(--color-border);
+    color: var(--color-gold);
+}
+.form-radio:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-border-focus);
+}
+.radio-option-content {
+    margin-left: 1rem; /* ml-4 */
+    flex: 1;
+}
+.radio-option-content p {
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+.radio-option-content span {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-text-dimmer);
+}
+.radio-option-price {
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+.radio-option span {
+    margin-left: 1rem; /* ml-4 */
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+/* Active state for radio buttons */
+.radio-option:has(:checked),
+.radio-option-collapsible:has(:checked) {
+    border-color: var(--color-gold);
+    background-color: rgba(212, 175, 55, 0.1); /* bg-saphira-gold/10 */
+}
+/* Collapsible payment form */
+.radio-option-collapsible {
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    transition: all 0.15s ease;
+}
+.radio-option-body {
+    padding: 0 1rem 1rem 1rem; /* px-4 pb-4 */
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
+    display: none; /* Hidden by default */
+}
+.radio-option-collapsible:has(:checked) .radio-option-body {
+    display: block; /* Show when parent is checked */
+}
+
+/* Summary Column */
+.checkout-summary-column {
+    grid-column: span 1;
+}
+@media (min-width: 1024px) { /* lg: */
+    .checkout-summary-column { grid-column: span 2; }
+}
+
+.summary-box {
+    position: sticky;
+    top: 7rem; /* top-28 */
+    background-color: var(--color-bg-summary);
+    padding: 1.5rem; /* p-6 */
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+}
+@media (min-width: 768px) {
+    .summary-box { padding: 2rem; } /* md:p-8 */
+}
+.summary-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 1.5rem; /* mb-6 */
+    text-align: center;
+}
+.summary-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space-y-4 */
+}
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.summary-item-image {
+    width: 4rem; /* w-16 */
+    height: 4rem; /* h-16 */
+    border-radius: var(--border-radius-lg);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.summary-item-info {
+    flex: 1;
+}
+.summary-item-info p {
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+.summary-item-info span {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-text-dimmer);
+}
+.summary-item-price {
+    font-weight: 500;
+    color: var(--color-text-light);
+}
+.summary-divider {
+    border-top: 1px solid var(--color-border);
+    margin: 1.5rem 0; /* my-6 */
+}
+.summary-costs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* space-y-3 */
+    font-size: 0.875rem; /* text-sm */
+}
+.summary-cost-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-dim);
+}
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-light);
+}
+.summary-total span:first-child {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+}
+.total-price {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    color: var(--color-gold);
+}
+.form-checkbox-label.terms {
+    margin-top: 2rem; /* mt-8 */
+}
+.form-checkbox-label.terms a {
+    color: var(--color-gold);
+}
+.form-checkbox-label.terms a:hover {
+    text-decoration: underline;
+}
+
+.btn-place-order {
+    margin-top: 1.5rem; /* mt-6 */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem; /* h-14 */
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700;
+    letter-spacing: 0.025em; /* tracking-wide */
+    transition: opacity 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+}
+.btn-place-order:hover {
+    opacity: 0.9;
+}
+
+/* === Footer (Theme Checkout) === */
+.checkout-footer {
+    background-color: var(--color-black);
+    border-top: 1px solid var(--color-border);
+    margin-top: 4rem; /* mt-16 */
+    padding: 1.5rem 1rem; /* py-6 px-4 */
+    text-align: center;
+}
+.checkout-footer p {
+    color: var(--color-text-dimmer);
+    font-size: 0.875rem; /* text-sm */
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+
+    <header class="checkout-header-sticky">
+        <div class="header-logo-container">
+            <svg class="header-logo-icon" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
+            <h2 class="header-logo-text">SAPHIRA</h2>
+        </div>
+        <div class="header-actions">
+            <button class="icon-button" title="Tìm kiếm">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <a href="cart.html" class="icon-button" title="Giỏ hàng">
+                <span class="material-symbols-outlined">shopping_bag</span>
+            </a>
+            <a href="account.html" class="icon-button" title="Tài khoản">
+                <span class="material-symbols-outlined">person</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="checkout-main-container">
+        <div class="checkout-page-header">
+            <p class="checkout-page-title">Hoàn Tất Đơn Hàng Của Bạn</p>
+            <p class="checkout-page-subtitle">Bước cuối cùng để sở hữu những mùi hương độc quyền</p>
+        </div>
+
+        <div class="checkout-layout-grid">
+            <div class="checkout-form-column">
+                <section>
+                    <h3 class="form-section-title">Địa Chỉ Giao Hàng</h3>
+                    <div class="form-grid">
+                        <div class="col-span-2">
+                            <label class="form-label">Tên đầy đủ</label>
+                            <input class="form-input" placeholder="Nhập tên của bạn" type="text" />
+                        </div>
+                        <div class="col-span-2">
+                            <label class="form-label">Số điện thoại</label>
+                            <input class="form-input" placeholder="Nhập số điện thoại" type="text" />
+                        </div>
+                        <div class="col-span-2">
+                            <label class="form-label">Địa chỉ cụ thể</label>
+                            <input class="form-input" placeholder="Số nhà, tên đường..." type="text" />
+                        </div>
+                        <div>
+                            <label class="form-label">Tỉnh/Thành phố</label>
+                            <select class="form-select">
+                                <option>Chọn Tỉnh/Thành phố</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Quận/Huyện</label>
+                            <select class="form-select">
+                                <option>Chọn Quận/Huyện</option>
+                            </select>
+                        </div>
+                        <div class="col-span-2">
+                            <label class="form-checkbox-label">
+                                <input class="form-checkbox" type="checkbox" />
+                                <span>Sử dụng địa chỉ đã lưu</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="form-section-title">Phương Thức Vận Chuyển</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input name="shipping-method" type="radio" class="form-radio" checked />
+                            <div class="radio-option-content">
+                                <p>Giao hàng tiêu chuẩn</p>
+                                <span>Dự kiến 3-5 ngày làm việc</span>
+                            </div>
+                            <p class="radio-option-price">30.000đ</p>
+                        </label>
+                        <label class="radio-option">
+                            <input name="shipping-method" type="radio" class="form-radio" />
+                            <div class="radio-option-content">
+                                <p>Giao hàng nhanh</p>
+                                <span>Dự kiến 1-2 ngày làm việc</span>
+                            </div>
+                            <p class="radio-option-price">50.000đ</p>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="form-section-title">Phương Thức Thanh Toán</h3>
+                    <div class="radio-group" id="payment-options">
+                        <label class="radio-option">
+                            <input name="payment-method" type="radio" class="form-radio" data-target="cod" />
+                            <span>Thanh toán khi nhận hàng (COD)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input name="payment-method" type="radio" class="form-radio" data-target="bank" />
+                            <span>Chuyển khoản ngân hàng</span>
+                        </label>
+                        <div class="radio-option-collapsible">
+                            <label class="radio-option-header">
+                                <input name="payment-method" type="radio" class="form-radio" data-target="credit-card" />
+                                <span>Thẻ tín dụng/ghi nợ</span>
+                            </label>
+                            <div class="radio-option-body" id="credit-card-form">
+                                <div class="form-grid">
+                                    <div class="col-span-2">
+                                        <input class="form-input" placeholder="Số thẻ" />
+                                    </div>
+                                    <div>
+                                        <input class="form-input" placeholder="MM/YY" />
+                                    </div>
+                                    <div>
+                                        <input class="form-input" placeholder="CVV" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="checkout-summary-column">
+                <div class="summary-box">
+                    <h3 class="summary-title">Tóm Tắt Đơn Hàng</h3>
+                    <div class="summary-items-list">
+                        <div class="summary-item">
+                            <img class="summary-item-image" alt="Noir Élixir" src="/img/checkout-noir-elixir.jpg" />
+                            <div class="summary-item-info">
+                                <p>Noir Élixir</p>
+                                <span>100ml x 1</span>
+                            </div>
+                            <p class="summary-item-price">3.200.000đ</p>
+                        </div>
+                        <div class="summary-item">
+                            <img class="summary-item-image" alt="Aura Dorée" src="/img/checkout-aura-doree.jpg" />
+                            <div class="summary-item-info">
+                                <p>Aura Dorée</p>
+                                <span>50ml x 1</span>
+                            </div>
+                            <p class="summary-item-price">2.500.000đ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-divider"></div>
+                    
+                    <div class="summary-costs">
+                        <div class="summary-cost-row">
+                            <span>Tạm tính</span>
+                            <span>5.700.000đ</span>
+                        </div>
+                        <div class="summary-cost-row">
+                            <span>Phí vận chuyển</span>
+                            <span>30.000đ</span>
+                        </div>
+                        <div class="summary-cost-row">
+                            <span>Giảm giá</span>
+                            <span>-0đ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-total">
+                        <span>Tổng cộng</span>
+                        <span class="total-price">5.730.000đ</span>
+                    </div>
+
+                    <label class="form-checkbox-label terms">
+                        <input class="form-checkbox" type="checkbox" />
+                        <span>Tôi đồng ý với <a href="#">Điều khoản & Dịch vụ</a></span>
+                    </label>
+
+                    <button class="btn-place-order">
+                        Đặt Hàng Ngay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="checkout-footer">
+        <p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    
+    const paymentOptions = document.getElementById("payment-options");
+    const creditCardForm = document.getElementById("credit-card-form");
+    
+    if (paymentOptions && creditCardForm) {
+        // Lấy tất cả các nút radio trong nhóm
+        const radioButtons = paymentOptions.querySelectorAll('input[type="radio"][name="payment-method"]');
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener("change", function() {
+                // Kiểm tra xem nút radio được chọn có phải là nút của thẻ tín dụng không
+                if (this.dataset.target === "credit-card") {
+                    // Nếu là thẻ tín dụng, hiển thị form
+                    creditCardForm.style.display = "block";
+                } else {
+                    // Nếu là lựa chọn khác (COD, Bank), ẩn form
+                    creditCardForm.style.display = "none";
+                }
+            });
+        });
+    }
+
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAPHIRA - Bảng điều khiển quản trị</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/public/css/style-admin.css" />
+</head>
+<body>
+
+    <aside class="admin-sidebar" id="admin-sidebar">
+        <div>
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h2 class="sidebar-logo-text">SAPHIRA</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <h1 class="nav-section-title">ADMIN PANEL</h1>
+                <a href="#" class="sidebar-link active">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <p>Dashboard</p>
+                </a>
+                <a href="/admin/adminproducts.html" class="sidebar-link">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <p>Quản lý Sản phẩm</p>
+                </a>
+                <a href="/admin/admindonhang.html" class="sidebar-link">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <p>Quản lý Đơn hàng</p>
+                </a>
+                <a href="/admin/admincustomers.html class="sidebar-link">
+                    <span class="material-symbols-outlined">group</span>
+                    <p>Quản lý Người dùng</p>
+                </a>
+                <a href="/admin/admincategories.html" class="sidebar-link">
+                    <span class="material-symbols-outlined">category</span>
+                    <p>Quản lý Danh mục</p>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">sell</span>
+                    <p>Quản lý Mã giảm giá</p>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="material-symbols-outlined">settings</span>
+                    <p>Cài đặt hệ thống</p>
+                </a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <a href="login.html" class="sidebar-link">
+                <span class="material-symbols-outlined">logout</span>
+                <p>Đăng xuất</p>
+            </a>
+        </div>
+    </aside>
+
+    <div class="admin-main-content">
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" title="Mở menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h2 class="topbar-title">Bảng điều khiển quản trị</h2>
+            </div>
+            <div class="topbar-right">
+                <span class="admin-username">Admin User</span>
+                <button class="notification-btn" title="Thông báo">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-badge">3</span>
+                </button>
+                <a href="login.html" class="logout-btn-desktop" title="Đăng xuất">
+                    <span class="material-symbols-outlined">logout</span>
+                </a>
+            </div>
+        </header>
+
+        <main class="admin-main-area">
+            <div class="admin-container">
+                <div class="page-header">
+                    <h1 class="page-title">Tổng quan</h1>
+                    <button class="btn-primary-admin">
+                        <span class="material-symbols-outlined">add</span>
+                        <span>Tạo báo cáo</span>
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p class="stat-title">Doanh thu hôm nay</p>
+                        <p class="stat-value">$12,850</p>
+                        <p class="stat-change stat-positive">
+                            <span class="material-symbols-outlined">arrow_upward</span>
+                            <span>+5.2%</span>
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-title">Đơn hàng mới</p>
+                        <p class="stat-value text-light">47</p>
+                        <p class="stat-change stat-positive">
+                            <span class="material-symbols-outlined">arrow_upward</span>
+                            <span>+10%</span>
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-title">Lượt truy cập</p>
+                        <p class="stat-value text-light">3,205</p>
+                        <p class="stat-change stat-negative">
+                            <span class="material-symbols-outlined">arrow_downward</span>
+                            <span>-1.8%</span>
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-title">Tỷ lệ chuyển đổi</p>
+                        <p class="stat-value text-light">2.15%</p>
+                        <p class="stat-change stat-positive">
+                            <span class="material-symbols-outlined">arrow_upward</span>
+                            <span>+0.5%</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <p class="stat-title">Doanh thu tháng này</p>
+                            <p class="stat-value truncate">$256,780</p>
+                            <div class="chart-header-meta">
+                                <p>30 ngày qua</p>
+                                <p class="stat-change stat-positive">
+                                    <span class="material-symbols-outlined">arrow_upward</span>
+                                    <span>+12.5%</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="chart-svg-container">
+                            <svg fill="none" height="100%" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_chart)"></path>
+                                <path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#D4AF37" stroke-linecap="round" stroke-width="3"></path>
+                                <defs>
+                                <lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_chart" x1="236" x2="236" y1="1" y2="149">
+                                <stop stop-color="#D4AF37" stop-opacity="0.4"></stop>
+                                <stop offset="1" stop-color="#D4AF37" stop-opacity="0"></stop>
+                                </lineargradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="bestsellers-card">
+                        <h3 class="card-title">Sản phẩm bán chạy nhất</h3>
+                        <div class="bestsellers-list">
+                            <div class="bestseller-item">
+                                <img alt="Noir Élixir" class="bestseller-img" src="/img/product-noir-elixir.jpg" />
+                                <div class="bestseller-info">
+                                    <p>Noir Élixir</p>
+                                    <span>Đã bán: 1,204</span>
+                                </div>
+                                <p class="bestseller-price">$180</p>
+                            </div>
+                            <div class="bestseller-item">
+                                <img alt="Aura d'Or" class="bestseller-img" src="/img/product-aura-dor.jpg" />
+                                <div class="bestseller-info">
+                                    <p>Aura d'Or</p>
+                                    <span>Đã bán: 987</span>
+                                </div>
+                                <p class="bestseller-price">$220</p>
+                            </div>
+                            <div class="bestseller-item">
+                                <img alt="Esprit Minuit" class="bestseller-img" src="/img/product-esprit-minuit.jpg" />
+                                <div class="bestseller-info">
+                                    <p>Esprit Minuit</p>
+                                    <span>Đã bán: 752</span>
+                                </div>
+                                <p class="bestseller-price">$155</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-orders-card">
+                    <h3 class="card-title">Đơn hàng gần đây</h3>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Khách hàng</th>
+                                    <th>Ngày</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#SAPH-8461</td>
+                                    <td>Nguyễn Văn An</td>
+                                    <td>20/07/2024</td>
+                                    <td>$400.00</td>
+                                    <td><span class="status-badge status-delivered">Hoàn thành</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#SAPH-8460</td>
+                                    <td>Trần Thị Bích</td>
+                                    <td>20/07/2024</td>
+                                    <td>$180.00</td>
+                                    <td><span class="status-badge status-processing">Đang xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#SAPH-8459</td>
+                                    <td>Lê Hoàng Cường</td>
+                                    <td>19/07/2024</td>
+                                    <td>$220.00</td>
+                                    <td><span class="status-badge status-shipped">Đang giao</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#SAPH-8458</td>
+                                    <td>Phạm Thị Dung</td>
+                                    <td>18/07/2024</td>
+                                    <td>$335.00</td>
+                                    <td><span class="status-badge status-cancelled">Đã hủy</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="admin-footer">
+                <p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>

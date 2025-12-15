@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAPHIRA - Xác Nhận Đơn Hàng</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="/de/duan1/public/css/style.css" />
+    <style>
+        /* === Cài đặt Chung & Biến (Theme Order Detail) === */
+:root {
+    --font-display: 'Manrope', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+    --color-primary: #f4c025;
+    --color-gold: #D4AF37;
+    --color-bg-start: #1a1a1a;
+    --color-bg-end: #000000;
+    --color-header: rgba(0, 0, 0, 0.8);
+    --color-text-light: #ffffff;
+    --color-text-dim: rgba(255, 255, 255, 0.8);
+    --color-text-dimmer: rgba(255, 255, 255, 0.7);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-bg-content: rgba(0, 0, 0, 0.5);
+    --color-black: #000000;
+
+    --border-radius: 0.5rem;
+    --border-radius-lg: 1rem;
+    --border-radius-xl: 1.5rem;
+    --border-radius-2xl: 2rem;
+}
+
+/* Reset cơ bản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-display);
+    background-image: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
+    color: var(--color-text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* === Header (Tái sử dụng từ Checkout) === */
+.checkout-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Đổi từ space-between */
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-gold);
+    padding: 1rem 1rem; /* px-4 */
+    background-color: var(--color-header);
+    backdrop-filter: blur(4px);
+}
+@media (min-width: 640px) {
+    .checkout-header-sticky { padding: 1rem 2rem; } /* sm:px-8 */
+}
+@media (min-width: 1024px) {
+    .checkout-header-sticky { padding: 1rem 4rem; } /* md:px-16 */
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.header-logo-icon {
+    height: 1.5rem; /* h-6 */
+    width: 1.5rem; /* w-6 */
+    color: var(--color-gold);
+}
+.header-logo-icon svg { width: 100%; height: 100%; }
+.header-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.05em; /* tracking-wider */
+}
+
+/* === Main Order Detail Content === */
+.order-main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 2.5rem 1rem; /* py-10 px-4 */
+}
+@media (min-width: 768px) {
+    .order-main-container { padding: 4rem 2rem; } /* md:py-16 md:px-16 */
+}
+
+.order-content-wrapper {
+    width: 100%;
+    max-width: 1024px; /* max-w-5xl */
+}
+
+.order-page-header {
+    margin-bottom: 2.5rem; /* mb-10 */
+    text-align: center;
+}
+.order-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+.order-icon-wrapper span {
+    display: flex;
+    height: 5rem; /* h-20 */
+    width: 5rem; /* w-20 */
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgba(212, 175, 55, 0.1); /* bg-saphira-gold/10 */
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 3rem; /* !text-5xl */
+}
+.order-page-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.025em; /* tracking-wide */
+}
+@media (min-width: 768px) {
+    .order-page-title { font-size: 3rem; } /* md:text-5xl */
+}
+.order-page-subtitle {
+    margin-top: 0.75rem; /* mt-3 */
+    color: var(--color-text-dim);
+    font-size: 1rem; /* text-base */
+    max-width: 42rem; /* max-w-2xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 768px) {
+    .order-page-subtitle { font-size: 1.125rem; } /* md:text-lg */
+}
+
+/* Layout Grid */
+.order-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* gap-8 */
+}
+@media (min-width: 1024px) { /* lg: */
+    .order-layout-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3rem; /* lg:gap-12 */
+    }
+}
+
+/* Box Styles */
+.order-details-box, .shipping-info-box {
+    background-color: var(--color-bg-content);
+    padding: 1.5rem; /* p-6 */
+    border-radius: var(--border-radius-2xl); /* rounded-2xl */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+}
+@media (min-width: 768px) {
+    .order-details-box, .shipping-info-box { padding: 2rem; } /* md:p-8 */
+}
+
+.box-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Order Details Box (Left) */
+.order-details-box {
+    grid-column: span 1;
+}
+@media (min-width: 1024px) { /* lg: */
+    .order-details-box { grid-column: span 3; }
+}
+
+.order-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space-y-4 */
+    margin-bottom: 1.5rem; /* mb-6 */
+    font-size: 0.875rem; /* text-sm */
+}
+.order-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-info-row span:first-child {
+    color: var(--color-text-dimmer);
+}
+.order-info-row span:last-child {
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+.order-info-row .order-id {
+    font-weight: 700;
+    color: var(--color-gold);
+}
+.divider {
+    border-top: 1px solid var(--color-border);
+    margin: 1.5rem 0; /* my-6 */
+}
+.order-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* space-y-5 */
+}
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.order-item-image {
+    width: 4rem; /* w-16 */
+    height: 4rem; /* h-16 */
+    border-radius: var(--border-radius-lg);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.order-item-info {
+    flex: 1;
+    min-width: 0; /* Cho phép truncate */
+}
+.order-item-name {
+    font-weight: 600;
+    color: var(--color-text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.order-item-meta {
+    font-size: 0.75rem; /* text-xs */
+    color: var(--color-text-dimmer);
+}
+.order-item-price {
+    text-align: right;
+}
+.order-item-price p {
+    font-weight: 500;
+    color: var(--color-text-light);
+    font-size: 0.875rem; /* text-sm */
+    white-space: nowrap;
+}
+.order-item-price span {
+    font-size: 0.75rem; /* text-xs */
+    color: var(--color-text-dimmer);
+    white-space: nowrap;
+}
+.order-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-total-row span:first-child {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+.total-price {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+/* Shipping Info Box (Right) */
+.shipping-info-box {
+    grid-column: span 1;
+}
+@media (min-width: 1024px) { /* lg: */
+    .shipping-info-box { grid-column: span 2; }
+}
+.shipping-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* space-y-3 */
+    font-size: 0.875rem; /* text-sm */
+}
+.shipping-info-list p {
+    line-height: 1.5;
+}
+.shipping-info-list span:first-child {
+    color: var(--color-text-dimmer);
+}
+.shipping-info-list span:last-child {
+    color: var(--color-text-light);
+}
+.delivery-estimate {
+    margin-top: 1rem; /* mt-4 */
+}
+.delivery-estimate span {
+    display: block;
+}
+.delivery-date {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Action Buttons */
+.order-actions {
+    margin-top: 3rem; /* mt-12 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* gap-4 */
+}
+@media (min-width: 640px) { /* sm: */
+    .order-actions { flex-direction: row; }
+}
+
+.btn-outline-gold {
+    width: 100%;
+    height: 3rem; /* h-12 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
+    padding: 0 2rem; /* px-8 */
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 1rem; /* text-base */
+    font-weight: 600;
+    letter-spacing: 0.025em; /* tracking-wide */
+    transition: background-color 0.15s ease;
+}
+.btn-outline-gold:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+@media (min-width: 640px) { /* sm: */
+    .btn-outline-gold { width: auto; }
+}
+
+.btn-primary-gold {
+    width: 100%;
+    height: 3rem; /* h-12 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
+    padding: 0 2rem; /* px-8 */
+    background-color: var(--color-gold); /* Khác với trang checkout */
+    color: var(--color-black);
+    font-size: 1rem; /* text-base */
+    font-weight: 600;
+    letter-spacing: 0.025em; /* tracking-wide */
+    transition: opacity 0.15s ease;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+}
+.btn-primary-gold:hover {
+    opacity: 0.9;
+}
+@media (min-width: 640px) { /* sm: */
+    .btn-primary-gold { width: auto; }
+}
+
+
+/* === Footer (Tái sử dụng từ Checkout) === */
+.checkout-footer {
+    background-color: var(--color-black);
+    border-top: 1px solid var(--color-border);
+    margin-top: 4rem; /* mt-16 */
+    padding: 1.5rem 1rem; /* py-6 px-4 */
+    text-align: center;
+}
+.checkout-footer p {
+    color: var(--color-text-dimmer);
+    font-size: 0.875rem; /* text-sm */
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+
+    <header class="checkout-header-sticky"> <a class="header-logo-container" href="index.html">
+            <svg class="header-logo-icon" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
+            <h2 class="header-logo-text">SAPHIRA</h2>
+        </a>
+    </header>
+
+    <main class="order-main-container">
+        <div class="order-content-wrapper">
+            <div class="order-page-header">
+                <div class="order-icon-wrapper">
+                    <span class="material-symbols-outlined">check</span>
+                </div>
+                <h1 class="order-page-title">Đơn Hàng Của Bạn Đã Được Xác Nhận!</h1>
+                <p class="order-page-subtitle">Cảm ơn bạn đã mua sắm tại SAPHIRA. Chi tiết đơn hàng của bạn đã được gửi đến email.</p>
+            </div>
+
+            <div class="order-layout-grid">
+                <div class="order-details-box">
+                    <h3 class="box-title">Chi Tiết Đơn Hàng</h3>
+                    <div class="order-info-list">
+                        <div class="order-info-row">
+                            <span>Số đơn hàng:</span>
+                            <span class="order-id">SPH-20240815-001</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span>Ngày đặt hàng:</span>
+                            <span>15/08/2024</span>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="order-items-list">
+                        <div class="order-item">
+                            <img class="order-item-image" alt="Noir Élixir" src="/img/checkout-noir-elixir.jpg" />
+                            <div class="order-item-info">
+                                <p class="order-item-name">Noir Élixir</p>
+                                <span class="order-item-meta">100ml x 1</span>
+                            </div>
+                            <div class="order-item-price">
+                                <p>3.200.000đ</p>
+                                <span>Đơn giá: 3.200.000đ</span>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <img class="order-item-image" alt="Aura Dorée" src="/img/checkout-aura-doree.jpg" />
+                            <div class="order-item-info">
+                                <p class="order-item-name">Aura Dorée</p>
+                                <span class="order-item-meta">50ml x 1</span>
+                            </div>
+                            <div class="order-item-price">
+                                <p>2.500.000đ</p>
+                                <span>Đơn giá: 2.500.000đ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="order-total-row">
+                        <span>Tổng cộng</span>
+                        <span class="total-price">5.730.000đ</span>
+                    </div>
+                </div>
+
+                <div class="shipping-info-box">
+                    <h3 class="box-title">Thông Tin Giao Hàng</h3>
+                    <div class="shipping-info-list">
+                        <p><span>Người nhận:</span> Nguyễn Văn A</p>
+                        <p><span>Số điện thoại:</span> 0987654321</p>
+                        <p><span>Địa chỉ:</span> 123 Đường ABC, Phường X, Quận Y, TP. Hồ Chí Minh</p>
+                        <p><span>Vận chuyển:</span> Giao hàng tiêu chuẩn</p>
+                        <p class="delivery-estimate">
+                            <span>Dự kiến giao hàng:</span>
+                            <span class="delivery-date">Thứ Hai, 19/08/2024</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-actions">
+                <button class="btn-outline-gold">Xem Đơn Hàng Của Tôi</button>
+                <button class="btn-primary-gold">Tiếp tục mua sắm</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="checkout-footer"> <p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+    </footer>
+
+</body>
+</html>

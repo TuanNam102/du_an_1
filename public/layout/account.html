@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAPHIRA - Tài Khoản Của Bạn</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* === Cài đặt Chung & Biến (Theme Account) === */
+:root {
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+    --color-primary: #D4AF37;
+    --color-bg-start: #222222;
+    --color-bg-end: #000000;
+    --color-bg-content: #111111;
+    --color-header: rgba(17, 17, 17, 0.8); /* #111111/80 */
+    --color-text-light: #ffffff;
+    --color-text-dim: rgba(255, 255, 255, 0.8);
+    --color-text-dimmer: rgba(255, 255, 255, 0.6);
+    --color-text-dimmest: rgba(255, 255, 255, 0.5);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-hover: rgba(255, 255, 255, 0.05);
+    --color-primary-tint: rgba(212, 175, 55, 0.2);
+
+    /* Status Colors */
+    --color-green: #22c55e;
+    --color-blue: #3b82f6;
+    --color-yellow: #eab308;
+
+    --border-radius: 0.5rem;
+    --border-radius-lg: 1rem;
+    --border-radius-xl: 1.5rem;
+}
+
+/* Reset cơ bản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-display);
+    background-image: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
+    color: var(--color-text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 0; }
+
+/* === Header (Theme Account) === */
+.account-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 1rem; /* px-4 sm:px-10 lg:px-20 py-4 */
+    background-color: var(--color-header);
+    backdrop-filter: blur(4px);
+}
+@media (min-width: 640px) {
+    .account-header-sticky { padding: 1rem 2.5rem; }
+}
+@media (min-width: 1024px) {
+    .account-header-sticky { padding: 1rem 5rem; }
+}
+
+.account-header-container {
+    display: flex;
+    width: 100%;
+    max-width: 1280px; /* max-w-7xl */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.header-logo-icon {
+    width: 1.5rem; /* size-6 */
+    height: 1.5rem;
+    color: var(--color-primary);
+}
+.header-logo-icon svg { width: 100%; height: 100%; }
+.header-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.05em; /* tracking-wider */
+}
+
+/* Nav Desktop */
+.account-nav-desktop {
+    display: none;
+}
+@media (min-width: 1024px) { /* lg: */
+    .account-nav-desktop {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2rem; /* gap-8 */
+    }
+}
+.account-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem; /* gap-9 */
+}
+.account-nav-links a {
+    color: var(--color-text-light);
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+.account-nav-links a:hover {
+    color: var(--color-primary);
+}
+.account-nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* gap-3 */
+}
+.icon-button {
+    display: flex;
+    height: 2.5rem; /* h-10 */
+    width: 2.5rem; /* w-10 */
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: var(--color-text-light);
+    transition: all 0.15s ease;
+}
+.icon-button:hover {
+    background-color: var(--color-hover);
+}
+.icon-button .material-symbols-outlined {
+    font-size: 1.5rem; /* text-2xl */
+}
+.icon-button.active {
+    background-color: var(--color-primary-tint);
+    color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* Nav Mobile */
+.icon-button-mobile {
+    display: flex; /* flex */
+    height: 2.5rem; /* h-10 */
+    width: 2.5rem; /* w-10 */
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: var(--color-text-light);
+    transition: background-color 0.15s ease;
+}
+.icon-button-mobile:hover {
+    background-color: var(--color-hover);
+}
+.icon-button-mobile .material-symbols-outlined {
+    font-size: 1.875rem; /* text-3xl */
+}
+@media (min-width: 1024px) { /* lg: */
+    .icon-button-mobile { display: none; }
+}
+
+/* === Main Account Content === */
+.account-main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto;
+    padding: 2.5rem 1rem; /* px-4 sm:px-10 lg:px-20 py-10 sm:py-16 */
+    gap: 2rem; /* gap-8 */
+}
+@media (min-width: 640px) {
+    .account-main-container { padding: 4rem 2.5rem; }
+}
+@media (min-width: 1024px) {
+    .account-main-container { padding: 4rem 5rem; }
+}
+
+.account-page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* gap-3 */
+    padding: 1rem; /* p-4 */
+    text-align: center;
+    align-items: center;
+}
+.account-page-title {
+    font-family: var(--font-serif); /* font-serif-display */
+    color: var(--color-primary);
+    font-size: 3rem; /* text-5xl */
+    font-weight: 700;
+}
+@media (min-width: 768px) {
+    .account-page-title { font-size: 3.75rem; } /* md:text-6xl */
+}
+.account-page-subtitle {
+    color: var(--color-text-light);
+    font-size: 1rem; /* text-base */
+}
+
+/* Layout Grid */
+.account-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* gap-8 */
+}
+@media (min-width: 1024px) { /* lg: */
+    .account-layout-grid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2.5rem; /* lg:gap-10 */
+    }
+}
+
+/* Sidebar */
+.account-sidebar {
+    grid-column: span 1;
+}
+@media (min-width: 1024px) { /* lg: */
+    .account-sidebar { grid-column: span 4; }
+}
+@media (min-width: 1280px) { /* xl: */
+    .account-sidebar { grid-column: span 3; }
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* gap-4 */
+    border-radius: var(--border-radius-lg); /* rounded-2xl */
+    background-color: var(--color-bg-content);
+    padding: 1.25rem; /* p-5 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.sidebar-user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.sidebar-avatar {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 9999px;
+    width: 3rem; /* size-12 */
+    height: 3rem;
+    flex-shrink: 0;
+}
+.sidebar-user-text h2 {
+    font-family: var(--font-display); /* Override serif */
+    font-size: 1rem; /* text-base */
+    font-weight: 500;
+    color: var(--color-text-light);
+}
+.sidebar-user-text p {
+    color: var(--color-text-dimmer);
+    font-size: 0.875rem; /* text-sm */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sidebar-nav {
+    margin-top: 1rem; /* mt-4 */
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* gap-1 */
+}
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* gap-3 */
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    border-radius: var(--border-radius);
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+.sidebar-link:hover {
+    background-color: var(--color-hover);
+}
+.sidebar-link:hover .material-symbols-outlined,
+.sidebar-link:hover p {
+    color: var(--color-primary);
+}
+.sidebar-link .material-symbols-outlined {
+    font-size: 1.5rem; /* text-2xl */
+    color: var(--color-text-dim);
+    transition: color 0.15s ease;
+}
+.sidebar-link p {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    color: var(--color-text-light);
+    transition: color 0.15s ease;
+}
+/* Active State */
+.sidebar-link.active {
+    background-color: var(--color-primary-tint);
+    border-left: 4px solid var(--color-primary);
+    padding-left: calc(1rem - 4px); /* (px-4) - (border-l-4) */
+}
+.sidebar-link.active .material-symbols-outlined {
+    color: var(--color-primary);
+}
+.sidebar-link.active p {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+
+/* Content Panel */
+.account-content {
+    grid-column: span 1;
+    min-height: 500px;
+}
+@media (min-width: 1024px) { /* lg: */
+    .account-content { grid-column: span 8; }
+}
+@media (min-width: 1280px) { /* xl: */
+    .account-content { grid-column: span 9; }
+}
+
+.content-panel {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-lg); /* rounded-2xl */
+    background-color: var(--color-bg-content);
+    padding: 1.5rem; /* p-6 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 640px) {
+    .content-panel { padding: 2rem; } /* sm:p-8 */
+}
+
+.content-title {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;
+    line-height: 1.2;
+}
+@media (min-width: 640px) {
+    .content-title { font-size: 2.25rem; } /* sm:text-4xl */
+}
+.content-description {
+    color: var(--color-text-dim);
+    font-size: 1rem; /* text-base */
+    line-height: 1.625; /* leading-relaxed */
+    margin-top: 1rem; /* mt-4 */
+}
+
+/* Recent Orders Table */
+.recent-orders-section {
+    margin-top: 2rem; /* mt-8 */
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem; /* pt-8 */
+}
+.recent-orders-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 1rem; /* mb-4 */
+}
+.table-container {
+    overflow-x: auto;
+}
+.orders-table {
+    width: 100%;
+    text-align: left;
+    min-width: 500px; /* Đảm bảo bảng không bị bóp quá */
+}
+.orders-table thead tr {
+    border-bottom: 1px solid var(--color-border);
+}
+.orders-table th {
+    color: var(--color-text-dimmer);
+    font-size: 0.75rem; /* text-xs */
+    text-transform: uppercase;
+    padding: 0.75rem 1rem; /* py-3 px-4 */
+    font-weight: 400;
+}
+.orders-table tbody tr {
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.875rem; /* text-sm */
+    transition: background-color 0.15s ease;
+}
+.orders-table tbody tr:last-child {
+    border-bottom: none;
+}
+.orders-table tbody tr:hover {
+    background-color: var(--color-hover);
+}
+.orders-table td {
+    padding: 1rem; /* py-4 px-4 */
+    font-weight: 500;
+}
+.col-hidden-sm {
+    display: none;
+}
+@media (min-width: 640px) {
+    .col-hidden-sm { display: table-cell; }
+}
+.col-text-right {
+    text-align: right;
+}
+.status-badge {
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500;
+    padding: 0.25rem 0.5rem; /* px-2 py-1 */
+    border-radius: 9999px;
+}
+.status-delivered {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: var(--color-green);
+}
+.status-shipped {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: var(--color-blue);
+}
+.status-processing {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: var(--color-yellow);
+}
+.view-all-orders {
+    margin-top: 1.5rem; /* mt-6 */
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-link {
+    color: var(--color-primary);
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 700;
+}
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* === Footer (Theme Account) === */
+.account-footer {
+    width: 100%;
+    background-color: var(--color-bg-content);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto; /* Đẩy footer xuống dưới */
+}
+.account-footer-container {
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto;
+    padding: 4rem 1rem; /* px-4 sm:px-10 lg:px-20 py-16 */
+}
+@media (min-width: 640px) {
+    .account-footer-container { padding: 4rem 2.5rem; }
+}
+@media (min-width: 1024px) {
+    .account-footer-container { padding: 4rem 5rem; }
+}
+
+.account-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* gap-12 */
+}
+@media (min-width: 768px) {
+    .account-footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.footer-title {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    margin-bottom: 1rem; /* mb-4 */
+}
+.footer-description {
+    color: var(--color-text-dimmer);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.625; /* leading-relaxed */
+}
+.footer-links, .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* gap-2 */
+    list-style: none;
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-text-dimmer);
+}
+.footer-links a {
+    color: var(--color-text-dimmer);
+    transition: color 0.15s ease;
+}
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+.footer-copyright {
+    margin-top: 3rem; /* mt-12 */
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem; /* pt-8 */
+    text-align: center;
+}
+.footer-copyright p {
+    color: var(--color-text-dimmest);
+    font-size: 0.75rem; /* text-xs */
+}
+    </style>
+</head>
+<body>
+
+    <header class="account-header-sticky">
+        <div class="account-header-container">
+            <div class="header-logo-container">
+                <div class="header-logo-icon">
+                    <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="header-logo-text">SAPHIRA</h2>
+            </div>
+            <div class="account-nav-desktop">
+                <nav class="account-nav-links">
+                    <a href="index.html">Trang Chủ</a>
+                    <a href="men.html">Nước Hoa Nam</a>
+                    <a href="women.html">Nước Hoa Nữ</a>
+                    <a href="unisex.html">Nước Hoa Unisex</a>
+                </nav>
+                <div class="account-nav-icons">
+                    <button class="icon-button" title="Tìm kiếm">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <a href="cart.html" class="icon-button" title="Giỏ hàng">
+                        <span class="material-symbols-outlined">shopping_bag</span>
+                    </a>
+                    <a href="account.html" class="icon-button active" title="Tài khoản">
+                        <span class="material-symbols-outlined">person</span>
+                    </a>
+                </div>
+            </div>
+            <button class="icon-button-mobile" title="Menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="account-main-container">
+        <div class="account-page-header">
+            <h1 class="account-page-title">Tài Khoản Của Bạn</h1>
+            <p class="account-page-subtitle">Quản lý thông tin và đơn hàng của bạn</p>
+        </div>
+
+        <div class="account-layout-grid">
+            <aside class="account-sidebar">
+                <div class="sidebar-container">
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-avatar" style='background-image: url("/img/avatar-placeholder.jpg");'></div>
+                        <div class="sidebar-user-text">
+                            <h2>Xin chào, Tên Người Dùng</h2>
+                            <p>user.email@example.com</p>
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav" id="account-nav">
+                        <a href="#overview" class="sidebar-link active">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <p>Tổng quan tài khoản</p>
+                        </a>
+                        <a href="#orders" class="sidebar-link">
+                            <span class="material-symbols-outlined">receipt_long</span>
+                            <p>Đơn hàng của tôi</p>
+                        </a>
+                        <a href="#addresses" class="sidebar-link">
+                            <span class="material-symbols-outlined">home</span>
+                            <p>Địa chỉ giao hàng</p>
+                        </a>
+                        <a href="#details" class="sidebar-link">
+                            <span class="material-symbols-outlined">person</span>
+                            <p>Thông tin cá nhân</p>
+                        </a>
+                        <a href="#password" class="sidebar-link">
+                            <span class="material-symbols-outlined">lock</span>
+                            <p>Đổi mật khẩu</p>
+                        </a>
+                        <a href="login.html" class="sidebar-link">
+                            <span class="material-symbols-outlined">logout</span>
+                            <p>Đăng xuất</p>
+                        </a>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="account-content">
+                <div class="content-panel" id="overview-content">
+                    <h2 class="content-title">Tổng quan tài khoản</h2>
+                    <p class="content-description">
+                        Chào mừng trở lại! Từ đây bạn có thể xem các đơn hàng gần đây, quản lý địa chỉ giao hàng và chỉnh sửa thông tin cá nhân.
+                    </p>
+                    <div class="recent-orders-section">
+                        <h3 class="recent-orders-title">Đơn hàng gần đây</h3>
+                        <div class="table-container">
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Đơn hàng</th>
+                                        <th class="col-hidden-sm">Ngày đặt</th>
+                                        <th>Trạng thái</th>
+                                        <th class="col-text-right">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#SP12045</td>
+                                        <td class="col-hidden-sm">15/07/2024</td>
+                                        <td><span class="status-badge status-delivered">Đã giao hàng</span></td>
+                                        <td class="col-text-right">4.500.000₫</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SP12031</td>
+                                        <td class="col-hidden-sm">28/06/2024</td>
+                                        <td><span class="status-badge status-shipped">Đang vận chuyển</span></td>
+                                        <td class="col-text-right">3.200.000₫</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SP12015</td>
+                                        <td class="col-hidden-sm">10/06/2024</td>
+                                        <td><span class="status-badge status-processing">Đang xử lý</span></td>
+                                        <td class="col-text-right">5.100.000₫</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="view-all-orders">
+                            <button class_name="btn-link">Xem tất cả đơn hàng</button>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </main>
+
+    <footer class="account-footer">
+        <div class="account-footer-container">
+            <div class="account-footer-grid">
+                <div>
+                    <h3 class="footer-title">Về SAPHIRA</h3>
+                    <p class="footer-description">SAPHIRA là hiện thân của sự sang trọng, nơi mỗi mùi hương là một câu chuyện độc đáo, được chế tác từ những nguyên liệu quý giá nhất.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Hỗ trợ Khách hàng</h3>
+                    <nav class="footer-links">
+                        <a href="#">Chính sách đổi trả</a>
+                        <a href="#">Câu hỏi thường gặp</a>
+                        <a href="#">Hướng dẫn mua hàng</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3 class="footer-title">Thông tin Liên hệ</h3>
+                    <ul class="footer-contact">
+                        <li>Email: support@saphira.vn</li>
+                        <li>Hotline: 1900 1234</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    
+    const accountNav = document.getElementById("account-nav");
+    
+    if (accountNav) {
+        const navLinks = accountNav.querySelectorAll(".sidebar-link");
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", function(event) {
+                // (Ngăn chuyển trang nếu href là #)
+                if (this.href.endsWith("#")) {
+                    event.preventDefault();
+                }
+
+                // 1. Bỏ active khỏi tất cả các link
+                navLinks.forEach(nav => nav.classList.remove("active"));
+                
+                // 2. Thêm active cho link vừa bấm
+                this.classList.add("active");
+
+                // 3. (Trong ứng dụng thật, bạn sẽ ẩn/hiện các content panel
+                //    dựa trên href của link, ví dụ:
+                //    const targetId = this.href.split("#")[1];
+                //    document.querySelectorAll(".content-panel").forEach(panel => panel.style.display = 'none');
+                //    document.getElementById(targetId + "-content").style.display = 'block';
+                // )
+            });
+        });
+    }
+});
+    </script>
+</body>
+</html>

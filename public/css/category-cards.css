@@ -1,0 +1,30 @@
+/* Category Card Background - used in homepage category section */
+.category-card-bg {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-card-bg {
+    transform: scale(1.02);
+}
+
+.category-card-bg .category-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* If category card has just text and gradient background */
+.category-card-bg p.category-card-title {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}

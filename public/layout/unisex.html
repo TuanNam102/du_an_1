@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAPHIRA - Nước Hoa Unisex</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+    .font-serif-display {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .font-sans-body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#d4af37",
+            "background-light": "#ffffff",
+            "background-dark": "#000000",
+          },
+          fontFamily: {
+            "display": ["Cormorant Garamond", "serif"],
+            "body": ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans-body text-black dark:text-white">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap bg-background-light dark:bg-background-dark/80 px-4 sm:px-8 md:px-16 py-4 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<h1 class="text-primary text-2xl font-bold font-display tracking-wider">SAPHIRA</h1>
+</div>
+<nav class="hidden md:flex flex-1 justify-center items-center gap-10 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="index.html">Trang Chủ</a>
+<a class="hover:text-primary transition-colors" href="men.html">Nước Hoa Nam</a>
+<a class="hover:text-primary transition-colors" href="women.html">Nước Hoa Nữ</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="unisex.html  ">Nước Hoa Unisex</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</header>
+<main class="w-full max-w-7xl mx-auto px-4 sm:px-8 py-8 md:py-12">
+<!-- Filter Toolbar -->
+<section class="mb-8 md:mb-12">
+<div class="flex flex-col md:flex-row md:items-center gap-4">
+<div class="flex flex-1 flex-wrap items-center gap-2">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-transparent px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-sm font-medium">Sắp xếp: Mới nhất</p>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-transparent px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-sm font-medium">Gỗ</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-transparent px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-sm font-medium">Cay nồng</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-transparent px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-sm font-medium">Thanh mát</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-transparent px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-sm font-medium">Hoa quả</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full border border-gray-200 dark:border-gray-700 bg-transparent px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-sm font-medium">Đa tầng</p>
+</button>
+</div>
+<div class="w-full md:w-auto md:min-w-[280px]">
+<label class="relative flex w-full items-center">
+<span class="material-symbols-outlined absolute left-3 text-gray-500">search</span>
+<input class="form-input flex h-10 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 bg-transparent placeholder:text-gray-500 pl-10 pr-4 text-sm focus:border-primary focus:ring-0" placeholder="Tìm trong Nước hoa Unisex" value=""/>
+</label>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="mb-16 md:mb-24">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+<!-- Product Card 1 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Grey Musk perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDk9p4jSMpzK7SuLB5b7PhL3H-PcE3PRW-j37mtLvA-j0iFuHcIz2EH7ju_iHd4Szm1rtGrVLs76b_qx9R-ffagkOsispZdPv8lP5cqWU-go1Hk135FUAaFhXtsEekPsUSsXI7lI4V4A817LaItM0QxuL73Ub-4oSsgxFrq8_zL7in_Xa_EB8Akj2o8SUtXpIYiVMPcqYVOXJ7KrLbGZrfJqAQGsdnKnN8pNdiCSwblmQI05L5_yIOszwRtlfwW2dyyRx65W_FANRs");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Grey Musk</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.600.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Xạ hương</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Thanh mát</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_half</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Terra Nova perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7XKPfF1TslnfpLv-dbN4_DaRSy8L3Wdx9okMjKuKuVfYwOmLl9qhPlMRz8azqHih0pSqxjtjbP5NpLN_q2AjIT725p_RvgxNYh8aPWphX145OtVa0m7K-HL07v60MNwK0k-a4-AFFlvotd0XsLuafkn_AE8Gu3jrV319m-v_64_hbWTiOvR0zRefDTzp-DltfY6kzH02vj7_WKm_cHRygS4Z4QVWVvr1JF1YcTq-6E-m1kltKppcUFaSuOsTOXL7MUT6VGP3FaFM");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Terra Nova</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">3.000.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Đất</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Lá xanh</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_border</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 3 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Crystal Rain perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBudvAfTn_Pe-2mQJ5LdM_TWafdGm5DHjFIkFka4lZcMY9goVpnJn1FP6QyKvbZJA-Oh2EozFH_h6HPNhsfxv0lMm9X5O8FTvedDqohrFRywnR95CYj9OmfCHtJhtk0S48Y9XJGBoNS-OOShLyZ40Ru3qRr7k6xPLJ7UlS1YopLqnQh0esi5prLi-3zsRQs-rqbZIZK1MlSkYd4uFOfhCUJIEzH8gs0p-QS2Gh7RSqcKJm0LRi-VmFFfl30vM_mAJVyK-MG-9eqibU");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Crystal Rain</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.200.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Nước</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Khoáng chất</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Black Oud Harmony perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdEkz3JEi4Bv6wJWQ7Yf3hjmuctjurj47Y1AqtVvreJMFViQW_UMoYI3cK9ff7IxAV8om6CbxbU9PaPjH-OJX52LXOp2nL90Jri45G5ZmlooXWeTrH7irTjfzTJp_6Oh1XOyXMv1T8y4FvLloLgXEE_x21J14GGuqSY3Niix9BpP7XyqeWZZZNqD0LGHz7MASaRAiwEjFOt6PCb-mxHSJC6EG0z9Ea_8CDaeebo3I75VTo1zyvWk2f9Wj_fJEAwJhzv-nRSB1XM2g");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Black Oud</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">3.500.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Trầm hương</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Thâm trầm</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_half</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 5 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Golden Hour perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5XPSN3Ih-ErG1y6iCy6ZGs7cJ8w0hTdKx9PaRjjTaES2PDaMYl2SDO1ylUE6tspYE6N7i4RCc-9yNSOEf-I_kMVRkDoY9KXlqCUYFlD4cAZyztSJkkcagCHgQhkxa1n_pk_bW7qwPH4KUfkIRSgoMkUQGGgUV5H1KOT8m65aZu3mP8h6DlQ_YvDEWyTUMxjEpcAfRhO8nuSDE92Vjgq0lFjLnS8AKKaX0PRhWd9xmj6o-3xqD6N2aaE15hMPTGSNgfbZ8iZL0jiI");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Golden Hour</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.800.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Cam quýt</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Ấm áp</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 6 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA White Incense perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA60rz31YDqg6Qd5g_Uzc-05gk5fnLlQT70It8bmXdbUNmH57NUoWpMCZka9IH1eRCGARJnR2uRD2XsaMYqzXcPAsjgtnMC_nOxTShZWM4Oki_5HzCxfTxRv6zx0ho154ecpa1gwUQMbi4W5yKugNCTcQnepr0LWNViv6ONrW1cQHalnWqvqyawJ-uPkL4ngfbwtWOLS0erdqD3MyZk6MCTolLj_yWaMKv5EAo8atJY7oayf_vnxxFo-DJR5Jb9lXOrAfOZ692EXQQ");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA White Incense</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.400.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Trầm</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Thanh tịnh</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_half</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 7 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Desert Bloom perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDPWMVjHUc6MoOQqKbav8SANxkBYplB17HojhsUwBwfeRgj9zKZVcEJvh0iQUyyNdbtLsuT7WQ_6oCaP2PwREFgNEGk1x587t5wf9bHcUtbXdE-1XV-UD6sWpziuZDlnMzP2n5QBhKqf7BhkhASBVX89_4APq_C_Qs5iMUVW8oQ4kNRjsmtdnZaMQGLiHAqGRiyPzw7idlDgRX4tY6v1eHKoey4o2JBHWgdKJK0M6l0NCHGhREgEjQC58F9ec6xSWismGLm3_ClBHk");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Desert Bloom</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.700.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Hoa khô</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Da thuộc</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_border</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 8 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Skyward Essence perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtJ6b0VIzxqDoPAGU-Pfj-a9yuPxYMt8-lu0MiJ0Rrr4Ep0wYiBVFa5UNa6HHHrMGN0VGDtM7HH9_MnioHhTDcAq6Md0JqXy2sj449833Z-Suw5ju8S5q1hWSLcdNTvfPQxQ9KnOljPcf6NJbNY7YNg-J3nhMzJPDHINhTXKbzOI7I9ztZJwx4TwalIv7jdvspjbtS-8SMNBduS7IoTn9QpmlMXl4NqBo96cgASpPl-XvHcTAv51dPGEqGV1LYPSBRo1FToPDJKqw");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Skyward</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.100.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Không khí</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Biển</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 9 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Velvet Smoke perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGm3E34Y0InSWPEmQfTIYRtldz5zpSdnRYZfwrHD1hRccHIr9WPn9zuT6O0v1N8iW0ahKui2d1xeZXu3F4PBeWDVRpT4oGj-D710EOgtKZ-NXxcCWbX-XR3BxmzTdbZjtSGsqJYAo_Jp-k7CGThCnqOClhMj49YUgvxxOI7Jsjh1Nv6xdXMFMNNxkaaKBgbTkfoXPJ2P5cIZfPWJuBftRA5Ks7YfWuvjm8jpCMAoob7p4H3MWAK8IeQSACmNZzdVy66JpXfyjaSys");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Velvet Smoke</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.950.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Khói</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Gỗ</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_half</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 10 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Urban Pulse perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPKUkfTMancD08AMAP5dRiREeEZn6POoUQIA0Xhozk4isbP9_yBdsbdCfZ1nyEsr7dJ9gpqZY9FSmzytTAsjDqHqpDFhN2d8KavnDd1y6wO9voY0gJ6XwJGSJEbPTsx0--fNx3KnSkPn3TTGu1DktZzB6YnAFpgPegaNBZT9ZF5zmlXcOGlQzocB1MAxXvENJ6JJ5gNNi3VzhjUAFLXz2uK3iYmTdS5Tc_mvaeeVA9ULhBDF-j65GxdY1rN7X1hshO0RCSLDybHIQ");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Urban Pulse</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.300.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Gia vị</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Năng động</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_border</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 11 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Forest Whisper perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCM_0RPgaN7Ma3-dcyNRx_w5wHq0WRji-MWXHv3yyUwXJSyDvRyeWZYdyG4ZoTWFCw_3Y4vHFanZywOItNKUZiFSpAch6y9dfudbEj38s05jcQh8kptLtlK1QExcGmdl6eVSOvjhzsk3C1xgFDC_OAHYYTSY-Rq-leavCXWk9WdfyCao9w3lBskeoVY_ut4T6D4viqtVfV5SbCx1d4wcRZWSiSBKBQVhPMcHIKZB-O6YxoLxsh-BJnmMAU3HESUa_V9JL8xsrtowvI");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Forest Whisper</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2.650.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Rêu</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Gỗ ẩm</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+<!-- Product Card 12 -->
+<div class="group relative flex flex-col">
+<div class="overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover bg-gray-100 dark:bg-gray-900 transition-transform duration-300 ease-in-out group-hover:scale-105" data-alt="Bottle of SAPHIRA Celestial Dust perfume" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDgS5WB_mJj7D8OkZC72iQk5Lwwz6V5dwjfi5SrQCycvWYkuGqnaUQYsQytlfIZ5bSxlM491xwDij__GIcu7F4axHRdbSMbA7OOA1kp5MGnCamorZFE9wo7H0q3u1G5NVF6en6IU44cQ49NC8sH5hoLnp-R995qlT64x70sGfJixz5mLZ888K81Xn4i0KBAGuPnfkWN_GZowCTxfGSuUKLZ7kMLAKFsw4x-0myIXBKcFTg80L520UIKUjzi5tToYVPK5McwiSnOedI");'></div>
+</div>
+<div class="mt-4 text-center">
+<h3 class="font-display text-xl font-bold">SAPHIRA Celestial Dust</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">3.100.000 VND</p>
+<div class="flex items-center justify-center gap-2 text-xs mt-2">
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Phấn</span>
+<span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Mơ màng</span>
+</div>
+<div class="flex justify-center mt-2 text-primary">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_half</span>
+</div>
+<button class="mt-4 w-full bg-primary text-background-dark text-sm font-bold py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">Thêm vào giỏ hàng</button>
+</div>
+<div class="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary transition-all duration-300 pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Pagination -->
+<nav class="flex items-center justify-center">
+<a class="flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</a>
+<a class="text-sm font-bold flex size-10 items-center justify-center text-background-dark bg-primary rounded-full" href="#">1</a>
+<a class="text-sm font-medium flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">2</a>
+<a class="text-sm font-medium flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">3</a>
+<span class="text-sm font-medium flex size-10 items-center justify-center rounded-full">...</span>
+<a class="text-sm font-medium flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">8</a>
+<a class="flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</a>
+</nav>
+</main>
+<!-- Why Choose Us Section -->
+<section class="bg-background-dark py-16 md:py-24">
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-8">
+<h2 class="text-center font-display text-3xl md:text-4xl font-bold text-white mb-12">Tại sao chọn Nước hoa Unisex SAPHIRA?</h2>
+<div class="grid md:grid-cols-3 gap-12 text-center text-white">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-2">Hương thơm độc đáo</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Phá vỡ mọi giới hạn, tạo nên những tầng hương tinh tế không dành riêng cho bất kỳ giới tính nào.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-2">Thành phần tự nhiên</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Tuyển chọn từ những nguyên liệu quý hiếm, thuần khiết và phù hợp với mọi làn da, mọi cá tính.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">fingerprint</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-2">Dấu ấn cá nhân</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Mỗi mùi hương là một tuyên ngôn, giúp bạn tự tin thể hiện phong cách và bản sắc riêng biệt.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="bg-background-light dark:bg-gray-900 py-16 md:py-24">
+<div class="w-full max-w-5xl mx-auto px-4 sm:px-8 text-center">
+<h2 class="font-display text-3xl md:text-4xl font-bold mb-12">Khách Hàng Nói Gì Về SAPHIRA</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="flex flex-col items-center p-6 rounded-lg">
+<img class="w-20 h-20 rounded-full object-cover mb-4" data-alt="Avatar of customer An Nguyen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu0k__uxb8fpNidMnjtJJgoXnGOn15e2Li3uJZ5mwlX0bFYCmXQJEc1B96cVUNcGDjcd1_wHKfEAgR1uME_8YhzgXdSDvSXBb1kKb5ZhxVCdP00h5Zgu3W7fBLPlZ6c6TUC-JEIU3Xi0fRW0us09hgrI9Uh1AfIsfaoNZTodzf3TiQ9z_kowQJ2uRGbj8xXHMENj_tI4tNKAdpNFdKPzYQ9f8T-_fMhV5_R-htkNjSa7WqajTHKyqgBMdM0WOSi4ok3dbL-x6OhIg"/>
+<div class="flex text-primary mb-2">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span>
+</div>
+<p class="italic text-gray-600 dark:text-gray-300 mb-4">"Terra Nova có mùi hương rất độc đáo, vừa mạnh mẽ lại vừa tinh tế. Tôi thực sự ấn tượng."</p>
+<p class="font-bold">An Nguyễn</p>
+</div>
+<div class="flex flex-col items-center p-6 rounded-lg">
+<img class="w-20 h-20 rounded-full object-cover mb-4" data-alt="Avatar of customer Minh Trần" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOc1NvVjp7_Klw25CcL6cmjADf4zv2lCmlIL3RYjAxAHp7bzk71-J91dME4C63jiKcgnqRP47A7DYmIZabkACOpDV-vzdkb4TBhyhTrol3H3HzGK9rztOsVxrAGJR0fx9odCs2ffNJimOesiqTQXhlMSc1O9o0srHorH7BsX9bNDb8f7YEnnweZiV5oFkNLKZ1nWiAZvYOX-UXClwAqEHbZ0Ra8vKC4w9qrA9lvTlhFqKupUgFdOEkm1ICLMmTC7iufB3VLgqwmjo"/>
+<div class="flex text-primary mb-2">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span>
+</div>
+<p class="italic text-gray-600 dark:text-gray-300 mb-4">"Chất lượng sản phẩm và dịch vụ của SAPHIRA đều tuyệt vời. Crystal Rain là chai nước hoa tôi yêu thích nhất."</p>
+<p class="font-bold">Minh Trần</p>
+</div>
+<div class="flex flex-col items-center p-6 rounded-lg">
+<img class="w-20 h-20 rounded-full object-cover mb-4" data-alt="Avatar of customer Lan Anh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABp2rtZB0t3wx8pHilR7S8sAw4mNDaKHXnBB6w9KzSOFZgjM0kOsge261VYdUK9PVcqsh1TVCyJ_CvK-bCKCnQyDljs9GySuQTITULZySLEHx9Iu6vseDvTaG4h9UnzhH_wNUsnIoqhcd7o0hKgF5CTwXyUSby6co5RJ5RJs4NEZMcdsmkOOJIBhLgcOT2xUEPW5xd2uBqW2vGaQcXDjufHZDx5H8J8awLefxVaIT_Z6ZSOIsPotcRSZxf6jvwoDMo67rQbQMJVsM"/>
+<div class="flex text-primary mb-2">
+<span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star</span><span class="material-symbols-outlined text-base">star_half</span>
+</div>
+<p class="italic text-gray-600 dark:text-gray-300 mb-4">"Thiết kế chai sang trọng, mùi hương lưu lại rất lâu. Một thương hiệu nước hoa niche đáng để trải nghiệm."</p>
+<p class="font-bold">Lan Anh</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-background-dark text-white pt-16 pb-8">
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-8">
+<div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+<div class="lg:col-span-2">
+<h2 class="text-primary text-2xl font-bold font-display tracking-wider mb-4">SAPHIRA</h2>
+<p class="text-gray-400 text-sm max-w-sm">Nơi nghệ thuật mùi hương được tôn vinh, tạo ra những dấu ấn cá nhân vượt thời gian và giới tính.</p>
+</div>
+<div>
+<h3 class="font-bold text-primary mb-4">Hỗ trợ Khách hàng</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Chính sách Đổi trả</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Hướng dẫn Mua hàng</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Câu hỏi Thường gặp</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Chính sách Vận chuyển</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-primary mb-4">Thông tin Liên hệ</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>Email: contact@saphira.vn</li>
+<li>Hotline: 1900 1234</li>
+<li>Địa chỉ: 123 Luxury Ave, Hà Nội</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+<p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

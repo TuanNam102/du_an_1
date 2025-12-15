@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAPHIRA - Đơn Hàng Của Tôi</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/public/css/style-order.css" />
+</head>
+<body>
+
+    <header class="order-header-sticky">
+        <div class="header-logo-container">
+            <h2 class="header-logo-text">SAPHIRA</h2>
+        </div>
+        <nav class="header-nav-order">
+            <a href="index.html">Trang Chủ</a>
+            <a href="men.html">Nước Hoa Nam</a>
+            <a href="women.html">Nước Hoa Nữ</a>
+            <a href="unisex.html">Nước Hoa Unisex</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-button" title="Tìm kiếm">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <a href="cart.html" class="icon-button" title="Giỏ hàng">
+                <span class="material-symbols-outlined">shopping_bag</span>
+            </a>
+            <a href="account.html" class="icon-button active" title="Tài khoản">
+                <span class="material-symbols-outlined">person</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="order-main-container">
+        <div class="order-page-header">
+            <p class="order-page-title">Đơn Hàng Của Tôi</p>
+            <p class="order-page-subtitle">Xem lại lịch sử mua sắm của bạn</p>
+        </div>
+
+        <div class="order-layout-grid">
+            <aside class="order-sidebar">
+                <div class="sidebar-container" id="account-nav">
+                    <a href="account.html" class="sidebar-link">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <p>Tổng quan tài khoản</p>
+                    </a>
+                    <a href="Order.html" class="sidebar-link active">
+                        <span class="material-symbols-outlined icon-filled">receipt_long</span>
+                        <p>Đơn hàng của tôi</p>
+                    </a>
+                    <a href="#" class="sidebar-link"> <span class="material-symbols-outlined">location_on</span>
+                        <p>Địa chỉ giao hàng</p>
+                    </a>
+                    <a href="#" class="sidebar-link"> <span class="material-symbols-outlined">account_circle</span>
+                        <p>Thông tin cá nhân</p>
+                    </a>
+                    <a href="#" class="sidebar-link"> <span class="material-symbols-outlined">lock</span>
+                        <p>Đổi mật khẩu</p>
+                    </a>
+                    <a href="login.html" class="sidebar-link link-logout">
+                        <span class="material-symbols-outlined">logout</span>
+                        <p>Đăng xuất</p>
+                    </a>
+                </div>
+            </aside>
+
+            <div class="order-content-column">
+                <div class="order-list-box">
+                    <div class="order-list-header">
+                        <h3 class="order-list-title">Lịch Sử Đơn Hàng</h3>
+                        <div class="order-filters">
+                            <div class="search-wrapper">
+                                <span class="material-symbols-outlined">search</span>
+                                <input class="form-input" placeholder="Tìm kiếm mã đơn hàng" type="text" />
+                            </div>
+                            <div class_name="select-wrapper">
+                                <select class="form-select">
+                                    <option>Tất cả trạng thái</option>
+                                    <option>Chờ xử lý</option>
+                                    <option>Đang giao</option>
+                                    <option>Đã giao</option>
+                                    <option>Đã hủy</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="order-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã Đơn Hàng</th>
+                                    <th>Ngày Đặt</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Trạng Thái</th>
+                                    <th class="col-text-right">Hành Động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-text-light">#SPH-82173</td>
+                                    <td>15/05/2024</td>
+                                    <td class="col-text-light">2.450.000đ</td>
+                                    <td><span class="status-tag status-delivered">Đã giao</span></td>
+                                    <td class="col-text-right">
+                                        <button class="btn-view-details">
+                                            Xem chi tiết <span class="material-symbols-outlined">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-text-light">#SPH-81992</td>
+                                    <td>02/05/2024</td>
+                                    <td class="col-text-light">4.100.000đ</td>
+                                    <td><span class="status-tag status-delivered">Đã giao</span></td>
+                                    <td class="col-text-right">
+                                        <button class="btn-view-details">
+                                            Xem chi tiết <span class="material-symbols-outlined">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-text-light">#SPH-76541</td>
+                                    <td>21/04/2024</td>
+                                    <td class="col-text-light">1.980.000đ</td>
+                                    <td><span class="status-tag status-processing">Chờ xử lý</span></td>
+                                    <td class="col-text-right">
+                                        <button class="btn-view-details">
+                                            Xem chi tiết <span class="material-symbols-outlined">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-text-light">#SPH-74102</td>
+                                    <td>10/03/2024</td>
+                                    <td class="col-text-light">3.200.000đ</td>
+                                    <td><span class="status-tag status-cancelled">Đã hủy</span></td>
+                                    <td class="col-text-right">
+                                        <button class="btn-view-details">
+                                            Xem chi tiết <span class="material-symbols-outlined">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <nav class="pagination-nav">
+                        <button class="pagination-arrow">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <a href="#" class="pagination-number active">1</a>
+                        <a href="#" class="pagination-number">2</a>
+                        <a href="#" class="pagination-number hidden-md">3</a>
+                        <span class="pagination-dots">...</span>
+                        <a href="#" class="pagination-number hidden-md">8</a>
+                        <button class="pagination-arrow">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="order-footer">
+        <div class="order-footer-container">
+            <div class="order-footer-grid">
+                <div>
+                    <h3 class="footer-title">Về SAPHIRA</h3>
+                    <p class="footer-description">SAPHIRA là nơi hội tụ của nghệ thuật và hương thơm, mang đến những mùi hương độc đáo, tinh tế và sang trọng nhất.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Hỗ trợ Khách hàng</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Thông tin Liên hệ</h3>
+                    <ul class="footer-links-static">
+                        <li>Email: contact@saphira.com</li>
+                        <li>Hotline: 1900 1234</li>
+                        <li>Địa chỉ: 123 Luxury Avenue, Ho Chi Minh City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/public/js/script-order.js"></script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Về Chúng Tôi - SAPHIRA</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* === Cài đặt Chung & Biến (Theme About) === */
+:root {
+    --font-display: 'Manrope', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --color-primary: #D4AF37; /* Màu vàng từ trang chủ */
+    --color-bg-start: #222222;
+    --color-bg-end: #000000;
+    --color-header: rgba(0, 0, 0, 0.5); /* bg-black/50 */
+    --color-text-light: #ffffff;
+    --color-text-dim: rgba(255, 255, 255, 0.8);
+    --color-text-dimmer: rgba(255, 255, 255, 0.5);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --border-radius: 0.5rem;
+    --border-radius-lg: 1rem;
+}
+
+/* Reset cơ bản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-display);
+    background-image: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
+    color: var(--color-text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+/* === Header (Theme About) === */
+.about-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-header);
+    backdrop-filter: blur(4px);
+}
+.about-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 1rem; /* px-4 sm:px-10 py-4 */
+    width: 100%;
+    max-width: 1280px; /* max-w-7xl */
+}
+@media (min-width: 640px) {
+    .about-header-container { padding: 1rem 2.5rem; }
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+.header-logo-icon {
+    width: 1.5rem; /* size-6 */
+    height: 1.5rem;
+    color: var(--color-primary);
+}
+.header-logo-icon svg { width: 100%; height: 100%; }
+.header-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.015em;
+}
+
+.header-nav-about {
+    display: none;
+}
+@media (min-width: 1024px) { /* lg: */
+    .header-nav-about {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        gap: 2.25rem; /* gap-9 */
+    }
+}
+.header-nav-about a {
+    color: var(--color-text-light);
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    line-height: 1.5;
+    transition: color 0.15s ease;
+    position: relative;
+    padding-bottom: 4px; /* Dành chỗ cho gạch chân */
+}
+.header-nav-about a:hover {
+    color: var(--color-primary);
+}
+.header-nav-about a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* h-0.5 */
+    background-color: var(--color-primary);
+}
+
+.header-actions-about {
+    display: flex;
+    gap: 0.5rem; /* gap-2 */
+}
+.icon-button-about {
+    display: flex;
+    height: 2.5rem; /* h-10 */
+    width: 2.5rem; /* w-10 */
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.1); /* bg-white/10 */
+    color: var(--color-text-light);
+    transition: background-color 0.15s ease;
+}
+.icon-button-about:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* hover:bg-white/20 */
+}
+.icon-button-about .material-symbols-outlined {
+    font-size: 1.25rem; /* text-xl */
+}
+
+/* === Main Content (Theme About) === */
+.about-main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 1024px; /* max-w-5xl */
+    margin: 0 auto;
+    padding: 1.25rem 1rem; /* py-5 px-4 */
+}
+
+.about-section {
+    padding: 4rem 0; /* py-16 */
+}
+@media (min-width: 768px) {
+    .about-section { padding: 6rem 0; } /* md:py-24 */
+}
+
+.text-center { text-align: center; }
+
+.about-title-primary {
+    color: var(--color-primary);
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
+    line-height: 1.2;
+    padding-bottom: 1.5rem; /* pb-6 */
+}
+.about-title-secondary {
+    color: var(--color-primary);
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;
+    line-height: 1.2;
+    padding-bottom: 1.5rem; /* pb-6 */
+}
+@media (min-width: 768px) {
+    .about-title-primary { font-size: 3rem; } /* md:text-5xl */
+    .about-title-secondary { font-size: 2.25rem; } /* md:text-4xl */
+}
+
+.about-subtitle {
+    font-size: 1rem; /* text-base */
+    line-height: 1.625; /* leading-relaxed */
+    max-width: 56rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2rem; /* pb-8 */
+}
+.about-section:not(:first-child) .about-subtitle {
+    padding-bottom: 3rem; /* pb-12 */
+}
+
+/* Image Wrappers */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+.aspect-16-9 { aspect-ratio: 16 / 9; }
+.aspect-1-1 { aspect-ratio: 1 / 1; }
+.aspect-4-5 { aspect-ratio: 4 / 5; }
+
+.image-bg {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Mission Section */
+.mission-grid {
+    display: grid;
+    gap: 3rem; /* gap-12 */
+    max-width: 64rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 768px) {
+    .mission-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.mission-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .mission-item {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+.mission-icon {
+    color: var(--color-primary);
+    margin-bottom: 1rem; /* mb-4 */
+}
+.mission-icon .material-symbols-outlined {
+    font-size: 3rem; /* text-5xl */
+}
+.mission-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    margin-bottom: 0.75rem; /* mb-3 */
+    color: var(--color-text-light);
+}
+.mission-text {
+    color: var(--color-text-dim);
+    font-size: 1rem; /* text-base */
+    line-height: 1.625; /* leading-relaxed */
+}
+
+/* Image Grids */
+.image-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; /* gap-4 */
+}
+@media (min-width: 768px) {
+    .image-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem; /* md:gap-6 */
+    }
+}
+
+.image-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem; /* gap-4 */
+}
+@media (min-width: 640px) { /* sm: */
+    .image-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) { /* lg: */
+    .image-grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+/* Xử lý class sm:col-span-2 */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .full-width-sm {
+        grid-column: span 2 / span 2;
+    }
+}
+
+/* === Footer (Theme About) === */
+.about-footer {
+    background-color: var(--color-bg-end); /* bg-black */
+    color: var(--color-text-dim);
+    padding: 3rem 0; /* py-12 */
+}
+.about-footer-container {
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto;
+    padding: 0 1rem; /* px-4 sm:px-10 */
+}
+@media (min-width: 640px) {
+    .about-footer-container { padding: 0 2.5rem; }
+}
+
+.about-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem; /* gap-8 */
+}
+@media (min-width: 768px) {
+    .about-footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.footer-title {
+    font-family: var(--font-serif);
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem; /* mb-4 */
+}
+.footer-links, .footer-links-static {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* space-y-2 */
+    font-size: 0.875rem; /* text-sm */
+}
+.footer-links a {
+    transition: color 0.15s ease;
+}
+.footer-links a:hover {
+    color: var(--color-text-light);
+}
+
+.footer-copyright {
+    border-top: 1px solid var(--color-border);
+    margin-top: 2rem; /* mt-8 */
+    padding-top: 1.5rem; /* pt-6 */
+    text-align: center;
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-text-dimmer);
+}
+    </style>
+</head>
+<body>
+
+    <header class="about-header-sticky">
+        <div class="about-header-container">
+            <div class="header-logo-container">
+                <div class="header-logo-icon">
+                    <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="header-logo-text">SAPHIRA</h2>
+            </div>
+            <nav class="header-nav-about">
+                <a href="index.html">Trang Chủ</a>
+                <a href="men.html">Nước Hoa Nam</a>
+                <a href="women.html">Nước Hoa Nữ</a>
+                <a href="unisex.html">Nước Hoa Unisex</a>
+                <a href="About.html" class="active">Về Chúng Tôi</a>
+            </nav>
+            <div class="header-actions-about">
+                <button class="icon-button-about" title="Tìm kiếm">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <button class="icon-button-about" title="Giỏ hàng">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                </button>
+                <button class="icon-button-about" title="Tài khoản">
+                    <span class="material-symbols-outlined">person</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="about-main-container">
+        <section class="about-section text-center">
+            <h1 class="about-title-primary">Hành Trình SAPHIRA: Nơi Hương Thơm Gặp Gỡ Nghệ Thuật</h1>
+            <p class="about-subtitle">
+                Khám phá lịch sử, nguồn cảm hứng và triết lý đã định hình nên SAPHIRA. Mỗi chai nước hoa là một câu chuyện, một tác phẩm nghệ thuật được chế tác từ những nguyên liệu quý hiếm và niềm đam mê bất tận.
+            </p>
+            <div class="image-wrapper aspect-16-9">
+                <div class="image-bg" style='background-image: url("/img/about-brand-story.jpg");'></div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="about-title-secondary text-center">Sứ Mệnh & Tầm Nhìn Của Chúng Tôi</h2>
+            <div class="mission-grid">
+                <div class="mission-item">
+                    <div class="mission-icon"><span class="material-symbols-outlined">auto_awesome</span></div>
+                    <h3 class="mission-title">Sứ Mệnh</h3>
+                    <p class="mission-text">Sứ mệnh của SAPHIRA là sáng tạo ra những mùi hương độc đáo, vượt thời gian, không chỉ để làm đẹp mà còn để đánh thức cảm xúc, kể lại những kỷ niệm và trở thành một phần không thể thiếu trong câu chuyện cá nhân của mỗi người.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-icon"><span class="material-symbols-outlined">visibility</span></div>
+                    <h3 class="mission-title">Tầm Nhìn</h3>
+                    <p class="mission-text">Chúng tôi khao khát trở thành biểu tượng của nghệ thuật chế tác nước hoa cao cấp, nơi sự tinh xảo trong từng giọt hương được tôn vinh và là nguồn cảm hứng cho những ai tìm kiếm vẻ đẹp tinh tế và sự sang trọng đích thực.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section text-center">
+            <h2 class="about-title-secondary">Tuyển Chọn Tinh Hoa: Quy Trình Nguyên Liệu Của SAPHIRA</h2>
+            <p class="about-subtitle">
+                Mỗi thành phần trong nước hoa SAPHIRA là một hành trình. Chúng tôi du hành khắp thế giới để tìm kiếm những nguyên liệu quý hiếm và tinh khiết nhất, từ những cánh hồng Damask ở Bulgaria đến gỗ đàn hương Mysore từ Ấn Độ, đảm bảo mỗi giọt hương đều mang trong mình tinh hoa của tự nhiên.
+            </p>
+            <div class="image-grid-4">
+                <div class="image-wrapper aspect-1-1">
+                    <div class="image-bg" style='background-image: url("/img/about-ingredient-1-rose.jpg");'></div>
+                </div>
+                <div class="image-wrapper aspect-1-1">
+                    <div class="image-bg" style='background-image: url("/img/about-ingredient-2-sandalwood.jpg");'></div>
+                </div>
+                <div class="image-wrapper aspect-1-1">
+                    <div class="image-bg" style='background-image: url("/img/about-ingredient-3-amber.jpg");'></div>
+                </div>
+                <div class="image-wrapper aspect-1-1">
+                    <div class="image-bg" style='background-image: url("/img/about-ingredient-4-jasmine.jpg");'></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="about-title-secondary text-center">Đằng Sau Mỗi Giọt Hương: Xưởng Chế Tác SAPHIRA</h2>
+            <p class="about-subtitle text-center">
+                Tại xưởng chế tác của chúng tôi, truyền thống và công nghệ hiện đại hòa quyện. Đội ngũ nghệ nhân tài hoa, với đôi tay khéo léo và khứu giác tinh tế, đã cống hiến trọn vẹn đam mê để biến những ý tưởng hương thơm thành hiện thực, tạo ra những tác phẩm nghệ thuật lay động mọi giác quan.
+            </p>
+            <div class="image-grid-3">
+                <div class="image-wrapper aspect-4-5">
+                    <div class="image-bg" style='background-image: url("/img/about-artisan-1.jpg");'></div>
+                </div>
+                <div class="image-wrapper aspect-4-5">
+                    <div class="image-bg" style='background-image: url("/img/about-artisan-2-vials.jpg");'></div>
+                </div>
+                <div class="image-wrapper aspect-4-5 full-width-sm">
+                    <div class="image-bg" style='background-image: url("/img/about-artisan-3-stopper.jpg");'></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="about-footer">
+        <div class="about-footer-container">
+            <div class="about-footer-grid">
+                <div>
+                    <h3 class="footer-title">Về SAPHIRA</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Câu Chuyện Của Chúng Tôi</a></li>
+                        <li><a href="#">Cửa Hàng</a></li>
+                        <li><a href="#">Cơ Hội Nghề Nghiệp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Hỗ Trợ Khách Hàng</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                        <li><a href="#">Chính Sách Vận Chuyển</a></li>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Theo Dõi Đơn Hàng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Thông Tin Liên Hệ</h3>
+                    <ul class="footer-links-static">
+                        <li>Email: contact@saphira.com</li>
+                        <li>Hotline: 1900 8888</li>
+                        <li>Địa chỉ: 123 Luxury Avenue, Paris, France</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© SAPHIRA 2025 – Mọi quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
